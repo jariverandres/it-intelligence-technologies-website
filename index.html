@@ -1,10 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Linux infrastructure support, server troubleshooting, and practical IT automation from IT Intelligence Technologies LLC.">
+  <meta name="description" content="IT Intelligence Technologies LLC provides Linux infrastructure support, server troubleshooting, and practical IT automation.">
+  <meta name="theme-color" content="#0b1120">
   <title>IT Intelligence Technologies LLC | Linux & IT Operations</title>
+
   <style>
     :root {
       --bg: #0b1120;
@@ -24,6 +27,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 25px;
     }
 
     body {
@@ -39,6 +43,11 @@
       text-decoration: none;
     }
 
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
     .container {
       width: min(1120px, 90%);
       margin: auto;
@@ -46,7 +55,7 @@
 
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(11, 17, 32, 0.96);
+      background: var(--bg);
     }
 
     nav {
@@ -75,8 +84,7 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover,
-    footer a:hover {
+    .nav-links a:hover {
       color: var(--accent);
     }
 
@@ -267,8 +275,26 @@
 
     .contact-box p {
       max-width: 650px;
-      margin: 0 auto 25px;
+      margin: 0 auto 20px;
       color: var(--muted);
+    }
+
+    .email-link {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 750;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      overflow-wrap: anywhere;
+      border-bottom: 1px solid transparent;
+    }
+
+    .email-link:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .contact-note {
+      font-size: 0.9rem;
+      margin-top: 18px !important;
     }
 
     footer {
@@ -324,7 +350,7 @@
 
 <body>
   <header>
-    <nav class="container">
+    <nav class="container" aria-label="Main navigation">
       <a class="brand" href="#home">
         IT <span>INTELLIGENCE</span> TECHNOLOGIES
       </a>
@@ -407,7 +433,7 @@
 
           <article class="card">
             <div class="number">04 / RELIABILITY</div>
-            <h3>Backup & Maintenance Reviews</h3>
+            <h3>Backup &amp; Maintenance Reviews</h3>
             <p>
               Reviews of backup procedures, maintenance routines,
               operational documentation, and recovery considerations.
@@ -422,7 +448,7 @@
         <div>
           <div class="eyebrow">Our Product Initiative</div>
           <h2>Introducing LinuxOps Center</h2>
-          <div class="status">In Development & Validation</div>
+          <div class="status">In Development &amp; Validation</div>
 
           <p>
             LinuxOps Center is an early-stage initiative exploring
@@ -496,14 +522,20 @@
           </p>
 
           <p>
-            For business inquiries, IT infrastructure support, Linux
-            administration, and automation opportunities, contact us a
+            For business inquiries, Linux administration, infrastructure
+            support, and automation opportunities, contact us at:
           </p>
+
           <p>
-            <a href="mailto:admin@itintelligencetechnologies.com"
-               style="color: #55d6be; font-weight: 700;">
-              admin@itintelligencetechnologies.com
-          </a>
+            <a
+              class="email-link"
+              href="mailto:admin@itintelligencetechnologies.com"
+            >admin@itintelligencetechnologies.com</a>
+          </p>
+
+          <p class="contact-note">
+            IT Intelligence Technologies LLC · Linux Infrastructure ·
+            IT Operations · Automation
           </p>
         </div>
       </div>
@@ -512,7 +544,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© 2026 IT Intelligence Technologies LLC</span>
+      <span>&copy; 2026 IT Intelligence Technologies LLC</span>
       <span>Linux Infrastructure · IT Operations · Automation</span>
     </div>
   </footer>
