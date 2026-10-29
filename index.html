@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linux infrastructure support, server troubleshooting, and practical IT automation from IT Intelligence Technologies LLC.">
+  <title>IT Intelligence Technologies LLC | Linux & IT Operations</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #121c30;
+      --text: #f1f5f9;
+      --muted: #a8b6ca;
+      --accent: #55d6be;
+      --blue: #76a9ff;
+      --border: #26344c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 17, 32, 0.96);
+    }
+
+    nav {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 750;
+      letter-spacing: -0.3px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 105px 0 95px;
+      background:
+        radial-gradient(ellipse at 85% 15%, #193653 0%, transparent 42%),
+        var(--bg);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      max-width: 850px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 8px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #07151a;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-left: 10px;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p,
+    .card p,
+    .about-text {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .card .number {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.22rem;
+      margin-bottom: 10px;
+    }
+
+    .product {
+      background: #101b2d;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .product-panel {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .product h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .product p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .status {
+      display: inline-block;
+      border: 1px solid #397c70;
+      color: var(--accent);
+      border-radius: 30px;
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    .product-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .product-list li {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 15px 18px;
+      border-radius: 9px;
+      color: #dce7f5;
+    }
+
+    .product-list li::before {
+      content: "✓";
+      color: var(--accent);
+      margin-right: 10px;
+      font-weight: 800;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about h2 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1.2;
+    }
+
+    .contact-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 38px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 72px 0;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .grid,
+      .product-panel,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+
+      .contact-box {
+        padding: 27px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">
+        IT <span>INTELLIGENCE</span> TECHNOLOGIES
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#linuxops">LinuxOps Center</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">IT Infrastructure · Linux · Automation</div>
+
+        <h1>
+          Linux Infrastructure.<br>
+          Practical Automation.<br>
+          <span>Better Operations.</span>
+        </h1>
+
+        <p>
+          Helping businesses approach Linux server challenges with
+          practical troubleshooting, infrastructure expertise, and
+          thoughtful operational improvements.
+        </p>
+
+        <a class="button" href="#services">Explore Our Services</a>
+        <a class="button button-outline" href="#linuxops">
+          Discover LinuxOps Center
+        </a>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What We Do</div>
+          <h2>Practical IT support for real infrastructure challenges.</h2>
+          <p>
+            Focused technical services designed to help organizations
+            understand their systems, investigate issues, and improve
+            recurring operational tasks.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="number">01 / INFRASTRUCTURE</div>
+            <h3>Linux Server Administration</h3>
+            <p>
+              Administration support, system checks, configuration
+              reviews, maintenance planning, and troubleshooting for
+              Linux-based environments.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">02 / TROUBLESHOOTING</div>
+            <h3>Infrastructure Diagnostics</h3>
+            <p>
+              Investigation of CPU, memory, disk capacity, system
+              services, logs, and availability issues to help identify
+              potential causes and next steps.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">03 / AUTOMATION</div>
+            <h3>IT Operations Automation</h3>
+            <p>
+              Practical automation opportunities for repetitive
+              administrative tasks, operational checks, reporting,
+              and consistent technical workflows.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">04 / RELIABILITY</div>
+            <h3>Backup & Maintenance Reviews</h3>
+            <p>
+              Reviews of backup procedures, maintenance routines,
+              operational documentation, and recovery considerations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="product" id="linuxops">
+      <div class="container product-panel">
+        <div>
+          <div class="eyebrow">Our Product Initiative</div>
+          <h2>Introducing LinuxOps Center</h2>
+          <div class="status">In Development & Validation</div>
+
+          <p>
+            LinuxOps Center is an early-stage initiative exploring
+            practical ways to help IT teams investigate Linux server
+            issues, organize diagnostic information, and streamline
+            routine operational workflows.
+          </p>
+
+          <p>
+            The goal is to complement existing IT management tools,
+            not replace them, with a Linux-focused approach to
+            troubleshooting and controlled automation.
+          </p>
+
+          <a class="button" href="#contact">Discuss Your Challenges</a>
+        </div>
+
+        <ul class="product-list">
+          <li>Linux-focused diagnostic workflows</li>
+          <li>Structured operational information</li>
+          <li>Incident investigation and reporting concepts</li>
+          <li>Carefully controlled remediation workflows</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div>
+          <div class="eyebrow">About Our Company</div>
+          <h2>Technology expertise with an operational mindset.</h2>
+        </div>
+
+        <div class="about-text">
+          <p>
+            IT Intelligence Technologies LLC focuses on IT infrastructure,
+            Linux administration, troubleshooting, and practical
+            automation.
+          </p>
+
+          <br>
+
+          <p>
+            Our approach emphasizes understanding the problem, documenting
+            findings, and selecting appropriate technical actions with
+            reliability and operational safety in mind.
+          </p>
+
+          <br>
+
+          <p>
+            We are building our services and product initiatives around
+            real infrastructure needs and ongoing conversations with
+            IT professionals and managed service providers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="eyebrow">Let's Connect</div>
+          <h2>Let's talk about your IT challenges.</h2>
+
+          <p>
+            Are you managing Linux servers, supporting business
+            infrastructure, or exploring ways to improve IT operations?
+            We welcome conversations with businesses, IT teams, and
+            managed service providers.
+          </p>
+
+          <p>
+            Contact information will be added here before the website
+            is officially launched.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 IT Intelligence Technologies LLC</span>
+      <span>Linux Infrastructure · IT Operations · Automation</span>
+    </div>
+  </footer>
+</body>
+</html>
